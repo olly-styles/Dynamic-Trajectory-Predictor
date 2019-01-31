@@ -19,8 +19,17 @@ import os
 import cv2
 from math import floor
 import numpy as np
+import argparse
 
-TRACK_PATH = '/home/olly/data/bdd/bdd_10k_detections.csv'
+parser = argparse.ArgumentParser()
+parser.add_argument('--detector', '-d', help="Use detections from 'yolo' or 'faster-rcnn'", type= str, default='yolo')
+args = parser.parse_args()
+
+if args.detector == 'yolo':
+    TRACK_PATH = '../data/bdd_10k_detections_yolo.csv'
+else:
+    TRACK_PATH = '../data/bdd_10k_detections_faster-rcnn.csv'
+
 SAVE_PATH = '../data/'
 
 # How far back and how far foward to use as features/predict respectively
@@ -85,5 +94,9 @@ boxes['Future_y'] = boxes[future_y_names].values.tolist()
 
 boxes = boxes.dropna(subset=['filename'],axis=0)
 
-boxes.to_pickle(SAVE_PATH + 'bdd_10k_location_features.pkl')
+if args.detector == 'yolo':
+    boxes.to_pickle(SAVE_PATH + 'bdd_10k_location_features_yolo.pkl')
+else:
+    boxes.to_pickle(SAVE_PATH + 'bdd_10k_location_features_faster-rcnn.pkl')
+
 print('Done.')
