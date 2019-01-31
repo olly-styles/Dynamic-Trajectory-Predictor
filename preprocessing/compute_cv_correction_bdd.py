@@ -17,14 +17,25 @@ from scipy.misc import imresize
 import scipy.ndimage
 import sys
 import processing_utils as utils
+import argparse
 
 PATH = '../data/'
 MIN_LENGTH_PAST = 10
 MIN_LENGTH_FUTURE= 15
 VELOCITY_FRAMES = 5
 
+parser = argparse.ArgumentParser()
+parser.add_argument('--detector', '-d', help="Use detections from 'yolo' or 'faster-rcnn'", type= str, default='yolo')
+args = parser.parse_args()
 
-features = pd.read_pickle(PATH + 'bdd_10k_location_features.pkl')
+
+if args.detector == 'yolo':
+    features = pd.read_pickle(PATH + 'bdd_10k_location_features_yolo.pkl')
+else:
+    features = pd.read_pickle(PATH + 'bdd_10k_location_features_faster-rcnn.pkl')
+
+
+
 features = features[features['Labeled']==1]
 
 features['Final_x'] = features['Future_x'].apply(lambda x: x[-1])
@@ -77,7 +88,10 @@ del train['index']
 del val['index']
 
 print('Saving...')
-train.to_pickle(PATH + 'bdd10k_train.pkl')
-val.to_pickle(PATH + 'bdd10k_val.pkl')
-
+if args.detector == 'yolo':
+    train.to_pickle(PATH + 'bdd10k_train_yolo.pkl')
+    val.to_pickle(PATH + 'bdd10k_val_yolo.pkl')
+else:
+    train.to_pickle(PATH + 'bdd10k_train_faster-rcnn.pkl')
+    val.to_pickle(PATH + 'bdd10k_val_faster-rcnn.pkl')
 print('Done.')
