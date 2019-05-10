@@ -1,6 +1,8 @@
 # Learning to Forecast Pedestrian Trajectory from Unlabelled Data
 This repository contains the code for the paper: Learning to Forecast Pedestrian Trajectory from Unlabelled Data.
 
+Paper: https://arxiv.org/pdf/1905.03681.pdf
+Video: https://www.youtube.com/watch?v=jUTQyUjeynE
 
 ## Installation
 #### Clone Repo 
