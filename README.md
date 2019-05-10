@@ -10,19 +10,19 @@ cd Dynamic-Trajectory-Predictor/
 ```
 #### Create virtual environment (recommended)
 ```bash
-virtualenv —no-site-packages dtp
+virtualenv --no-site-packages dtp
 source dtp/bin/activate
 ```
 #### Install packages
 ```bash
 pip install -r requirements.txt
 ```
-## Running on JAAD
+## Training on JAAD
 #### Download data
 Requires data downloads from Google Drive. This can be done manually, or using gdown (below)
 ```bash
 mkdir data && cd data
-gdown https://drive.google.com/uc?id=17Fvkrtxg_NEH2edH-wEp_Po5Y777zGQJ
+gdown https://drive.google.com/uc?id=1OuXLKrB6ItikYbnCM1yODQk2IUAmQ07y
 gdown https://drive.google.com/uc?id=1mP4y-S8NEnavfGGZLCzkfw4EIpDUfJnp
 unzip human-annotated.zip
 ```
@@ -37,7 +37,7 @@ cd ..
 ```bash
 python train_dtp_jaad.py
 ```
-#### Fine-tune a pre-trained model
+#### Fine-tune the pre-trained model
 ```bash
 cd data && mkdir models && cd models
 gdown https://drive.google.com/uc?id=1J2VclWeEjMj7WQhTmEPhjCaza4w5PSmX
