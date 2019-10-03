@@ -1,5 +1,5 @@
-# Forecasting Pedestrian Trajectory from Unlabelled Training Data
-This repository contains the code for the paper: Forecasting Pedestrian Trajectory from Unlabelled Training Data.
+# Forecasting Pedestrian Trajectory With Machine-Annotated Training Data
+This repository contains the code for the paper: Forecasting Pedestrian Trajectory With Machine-Annotated Training Data.
 
 Paper: https://arxiv.org/pdf/1905.03681.pdf  
   
