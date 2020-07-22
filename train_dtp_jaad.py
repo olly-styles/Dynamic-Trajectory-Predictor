@@ -332,7 +332,7 @@ def main(args):
         for epoch in range(1, epochs + 1):
             # Set learning rate to 1e-6 after 30 epochs
             if epoch > 30:
-                optimizer = optim.Adam(model.parameters(), lr=1e-6, weight_weight_decay=decay)
+                optimizer = optim.Adam(model.parameters(), lr=1e-6, weight_decay=weight_decay)
 
             train(model, device, train_loader, optimizer, epoch, loss_function)
             MSE_5,FDE_5,MSE_10,FDE_10,MSE_15,FDE_15,_,_ = test(model, device, val_loader, loss_function)
